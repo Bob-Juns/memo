@@ -39,6 +39,11 @@ const InputBox = styled.div`
   `}
 `;
 
+const Warning = styled.h5`
+  color: red;
+  font-size: 0.8rem;
+`;
+
 const Placeholder = styled.h5`
   font-size: 1.2rem;
   font-weight: 300;
@@ -48,6 +53,7 @@ const Placeholder = styled.h5`
 const Create = ({ createMemo }) => {
   const [isFocus, setIsFocus] = useState(false);
   const [title, setTitle] = useState('');
+  const [warningDesc, setWarningDesc] = useState('');
   const [description, setDescription] = useState('');
 
   const focusRef = useRef(null);
@@ -84,19 +90,21 @@ const Create = ({ createMemo }) => {
   const onDeleteInput = () => {
     setTitle('');
     setDescription('');
+    setWarningDesc('');
   };
 
   // 메모 생성
   const onCreateMemo = (event) => {
     event.preventDefault();
     if (title === '') {
-      console.log('타이틀 입력하라고!');
+      setWarningDesc('제목을 입력하세요.');
     } else if (description === '') {
-      console.log('내용은 입력 안해도 되지 않나');
+      setWarningDesc('내용을 입력하세요.');
     } else {
       createMemo(title, description);
       onDeleteInput();
       setIsFocus(false);
+      setWarningDesc('');
     }
   };
 
@@ -109,6 +117,7 @@ const Create = ({ createMemo }) => {
             title={title}
             description={description}
           />
+          <Warning>{warningDesc}</Warning>
           <Buttons
             onDelete={onDeleteInput}
             onSubmit={onCreateMemo}
