@@ -1,53 +1,50 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
-import { createMemo } from '../../redux/modules/memoReducer';
 
+// styles
 import styled from 'styled-components';
-import media from '../../styles/MediaQuery';
 
+// redux
+import { connect } from 'react-redux';
+import { actions } from '../../redux/modules/rootReducer';
+
+// components
 import InputSet from './InputSet';
-import Buttons from '../Buttons';
+import Buttons from '../Shared/Buttons';
 
 const Container = styled.div`
+  max-width: 768px;
+  margin: 0 auto;
   color: #000;
+  padding: 1rem;
 `;
 
 const InputBox = styled.div`
-  width: 700px;
-  margin: 1rem auto;
+  width: 100%;
   padding: 1rem;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  background-color: #fff;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
 
   cursor: text;
 
   &:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
-
-  ${media.tablet`
-    width: 500px;
-  `}
-
-  ${media.mobile`
-    width: 380px;
-  `}
-
-  ${media.extraSmall`
-    width: 290px;
-  `}
 `;
 
 const Warning = styled.h5`
   color: red;
-  font-size: 0.8rem;
+  font-family: 'NEXON Lv2 Gothic', sans-serif;
+  font-size: 0.75rem;
 `;
 
 const Placeholder = styled.h5`
-  font-size: 1.2rem;
-  font-weight: 300;
   color: #ced4da;
+
+  font-family: 'NEXON Lv2 Gothic', sans-serif;
+  font-size: 1.125rem;
 `;
 
 const Create = ({ createMemo }) => {
@@ -136,7 +133,7 @@ const Create = ({ createMemo }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createMemo: (title, description) =>
-      dispatch(createMemo(title, description)),
+      dispatch(actions.createMemo(title, description)),
   };
 };
 

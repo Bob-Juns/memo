@@ -1,7 +1,10 @@
 import React from 'react';
+
+// styles
 import styled from 'styled-components';
 
-import TrashIcon from '../assets/trash.svg';
+// assets
+import TrashIcon from '../../assets/trash.svg';
 
 const Container = styled.div`
   display: flex;
@@ -10,26 +13,30 @@ const Container = styled.div`
 `;
 
 const Save = styled.button`
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    color:#7048e8;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
+  padding: 0.5rem 1rem;
 
-    &:hover {
-      background-color: #f1f3f5;
-    }
+  color: #7048e8;
 
-    &:active {
-      background-color #e9ecef;
+  display: inline-block;
+
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f1f3f5;
+  }
+
+  &:active {
+    background-color: #e9ecef;
   }
 `;
 
 const Trash = styled(TrashIcon)`
   width: 20px;
   height: 20px;
+
   color: #adb5bd;
+
   cursor: pointer;
 
   &:hover {

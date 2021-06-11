@@ -1,24 +1,18 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import media from '../styles/MediaQuery';
+import device from '../styles/MediaQuery';
 
 const Container = styled.article`
   width: 100vw;
-  min-height: 100vh;
-  padding-top: 100px;
+  height: 100vh;
 
-  ${media.tablet`
-  padding-top: 90px;
-`}
+  padding-top: 60px;
+  margin: 0 auto;
 
-  ${media.mobile`
-  padding-top: 70px;
-`}
-
-${media.extraSmall`
-padding-top: 50px;
-`}
+  ${device.tablet`
+    padding-top: 80px;
+  `}
 `;
 
 const Layout = ({ children }) => {

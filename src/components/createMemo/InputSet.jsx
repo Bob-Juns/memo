@@ -1,18 +1,19 @@
 import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
 import Textarea from 'react-textarea-autosize';
+
+import styled from 'styled-components';
 
 const TitleInput = styled.input`
   width: 100%;
-  font-weight: 500;
   font-size: 1.25rem;
 `;
 
 const StyledTextArea = styled(Textarea)`
   width: 100%;
-  font-weight: 300;
-  font-size: 1.1rem;
   margin-top: 1rem;
+
+  font-size: 1.125rem;
+
   resize: both;
 `;
 

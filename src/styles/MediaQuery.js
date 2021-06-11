@@ -1,23 +1,17 @@
 import { css } from 'styled-components';
 
-const media = {
-  extraSmall: (...args) => css`
-    @media all and (max-width: 400px) {
-      ${css(...args)}
-    }
-  `,
-
-  mobile: (...args) => css`
-    @media all and (min-width: 401px) and (max-width: 768px) {
-      ${css(...args)}
-    }
-  `,
-
+const device = {
   tablet: (...args) => css`
-    @media all and (min-width: 769px) and (max-width: 1024px) {
+    @media all and (min-width: 768px) {
+      ${css(...args)}
+    }
+  `,
+
+  desktop: (...args) => css`
+    @media all and (min-width: 1024px) {
       ${css(...args)}
     }
   `,
 };
 
-export default media;
+export default device;

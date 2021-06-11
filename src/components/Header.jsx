@@ -1,11 +1,12 @@
 import React from 'react';
 
+// styles
 import styled from 'styled-components';
-import media from '../styles/MediaQuery';
+import device from '../styles/MediaQuery';
 
 const Container = styled.h1`
-  height: 100px;
   width: 100%;
+  height: 60px;
 
   display: flex;
   align-items: center;
@@ -13,30 +14,21 @@ const Container = styled.h1`
 
   position: fixed;
   top: 0px;
+
   z-index: 5;
 
   font-family: 'baloo 2', cursive;
-  font-size: 50px;
   font-weight: 700;
+  font-size: 1.75rem;
 
   color: #fff;
   background-color: #9775fa;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 
-  ${media.tablet`
-  height: 90px;
-  font-size: 40px;
-`}
-
-  ${media.mobile`
-  height: 70px;
-  font-size: 30px;
-`}
-
-${media.extraSmall`
-height: 50px;
-font-size: 25px;
-`}
+  ${device.tablet`
+    height: 80px;
+    font-size: 3rem;
+  `}
 `;
 
 const Header = () => {

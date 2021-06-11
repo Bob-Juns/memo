@@ -1,7 +1,15 @@
 import { combineReducers } from 'redux';
 
-import editorReducer from './editorReducer';
-import memoReducer from './memoReducer';
+//reducers
+import editorReducer, { handleEditorOpen } from './Editor';
+import memoReducer, { createMemo, deleteMemo, updateMemo } from './Memo';
+
+export const actions = {
+  handleEditorOpen,
+  createMemo,
+  deleteMemo,
+  updateMemo,
+};
 
 const rootReducer = combineReducers({
   editorReducer,

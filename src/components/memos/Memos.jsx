@@ -1,35 +1,36 @@
 import React, { useEffect } from 'react';
 
+// styles
 import styled from 'styled-components';
-import media from '../../styles/MediaQuery';
+import device from '../../styles/MediaQuery';
 
+// redux
 import { connect } from 'react-redux';
-import { handleEditorOpen } from '../../redux/modules/editorReducer';
+import { actions } from '../../redux/modules/rootReducer';
 
+// components
 import Memo from './Memo';
-import Edit from './Edit';
+import EditModal from './EditModal';
 
 const Container = styled.section`
-  height: 250px;
+  width: 100%;
+  height: 180px;
   padding: 1rem;
+
   border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 
-  ${media.tablet`
-  height: 220px;
-  `}
-
-  ${media.mobile`
+  ${device.tablet`
   height: 200px;
   `}
 
-  ${media.extraSmall`
-  height: 180px;
+  ${device.desktop`
+  height: 250px;
   `}
 `;
 
 const Memos = ({
-  editors,
+  isOpened,
   handleEditorOpen,
   id,
   title,
@@ -38,13 +39,13 @@ const Memos = ({
 }) => {
   // editor 오픈 시, 백그라운드 스크롤 방지.
   useEffect(() => {
-    editors.isOpened
+    isOpened
       ? (document.body.style.overflow = 'hidden')
       : (document.body.style.overflow = 'unset');
-  }, [editors.isOpened]);
+  }, [isOpened]);
 
   const editorHandler = () => {
-    editors.isOpened ? handleEditorOpen(false) : handleEditorOpen(true);
+    isOpened ? handleEditorOpen(false) : handleEditorOpen(true);
   };
 
   return (
@@ -56,8 +57,8 @@ const Memos = ({
         description={description}
         onSubmit={editorHandler}
       />
-      {editors.isOpened && (
-        <Edit
+      {isOpened && (
+        <EditModal
           id={id}
           title={title}
           description={description}
@@ -69,13 +70,14 @@ const Memos = ({
 };
 const mapStateToProps = (state) => {
   return {
-    editors: state.editorReducer,
+    isOpened: state.editorReducer.isOpened,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleEditorOpen: (isOpened) => dispatch(handleEditorOpen(isOpened)),
+    handleEditorOpen: (isOpened) =>
+      dispatch(actions.handleEditorOpen(isOpened)),
   };
 };
 
