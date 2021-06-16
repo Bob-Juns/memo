@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 // styles
 import styled from 'styled-components';
+import { size } from '../../styles/SharedStyle';
 import device from '../../styles/MediaQuery';
 
 // redux
@@ -11,23 +12,6 @@ import { actions } from '../../redux/modules/rootReducer';
 // components
 import Memo from './Memo';
 import EditModal from './EditModal';
-
-const Container = styled.section`
-  width: 100%;
-  height: 180px;
-  padding: 1rem;
-
-  border-radius: 10px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-
-  ${device.tablet`
-  height: 200px;
-  `}
-
-  ${device.desktop`
-  height: 250px;
-  `}
-`;
 
 const Memos = ({
   isOpened,
@@ -68,6 +52,24 @@ const Memos = ({
     </Container>
   );
 };
+
+const Container = styled.section`
+  width: 100%;
+  height: 180px;
+  padding: ${size.base};
+
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+
+  ${device.tablet`
+  height: 200px;
+  `}
+
+  ${device.desktop`
+  height: 250px;
+  `}
+`;
+
 const mapStateToProps = (state) => {
   return {
     isOpened: state.editorReducer.isOpened,

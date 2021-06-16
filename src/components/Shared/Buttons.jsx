@@ -2,47 +2,9 @@ import React from 'react';
 
 // styles
 import styled from 'styled-components';
-
+import { size, color } from '../../styles/SharedStyle';
 // assets
 import TrashIcon from '../../assets/trash.svg';
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Save = styled.button`
-  padding: 0.5rem 1rem;
-
-  color: #7048e8;
-
-  display: inline-block;
-
-  border-radius: 4px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f1f3f5;
-  }
-
-  &:active {
-    background-color: #e9ecef;
-  }
-`;
-
-const Trash = styled(TrashIcon)`
-  width: 20px;
-  height: 20px;
-
-  color: #adb5bd;
-
-  cursor: pointer;
-
-  &:hover {
-    color: #7048e8;
-  }
-`;
 
 const Buttons = ({ onDelete, onSubmit, btnName }) => {
   return (
@@ -54,5 +16,43 @@ const Buttons = ({ onDelete, onSubmit, btnName }) => {
     </>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Save = styled.button`
+  padding: calc(0.5 * ${size.base}) ${size.base};
+
+  color: ${color.dark};
+
+  display: inline-block;
+
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${color.gray};
+  }
+
+  &:active {
+    background-color: ${color.lightGray};
+  }
+`;
+
+const Trash = styled(TrashIcon)`
+  width: ${size.medium};
+  height: ${size.medium};
+
+  color: #adb5bd;
+
+  cursor: pointer;
+
+  &:hover {
+    color: ${color.dark};
+  }
+`;
 
 export default Buttons;

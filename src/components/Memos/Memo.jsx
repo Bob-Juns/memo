@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 // styles
 import styled from 'styled-components';
+import { size, color } from '../../styles/SharedStyle';
 import device from '../../styles/MediaQuery';
 
 // redux
@@ -11,93 +12,6 @@ import { actions } from '../../redux/modules/rootReducer';
 // components
 import Modal from '../Shared/Modal';
 import Buttons from '../Shared/Buttons';
-
-const Container = styled.section`
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-`;
-
-const CreatedAt = styled.h5`
-  color: #adb5bd;
-  font-family: 'NEXON Lv2 Gothic', sans-serif;
-  font-size: 0.75rem;
-`;
-
-const Title = styled.h1`
-  width: 100%;
-  margin-top: 1rem;
-
-  font-size: 1.25rem;
-
-  display: block;
-`;
-
-const Description = styled.p`
-  width: 100%;
-  max-height: 180px;
-
-  margin-top: 1rem;
-  margin-bottom: auto;
-
-  font-size: 1rem;
-  line-height: 120%;
-
-  display: block;
-
-  word-break: break-all;
-  white-space: pre-line;
-
-  overflow: auto;
-`;
-
-const Ask = styled.h1`
-  display: block;
-  width: 100%;
-
-  font-size: 1.125rem;
-
-  ${device.tablet`
-  font-size: 1.25rem;
-  `}
-`;
-
-const ButtonGroup = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-`;
-
-const Cancel = styled.button`
-  padding: 0.5rem 1rem;
-  color: #adb5bd;
-  cursor: pointer;
-
-  &:hover {
-    color: #7048e8;
-  }
-`;
-
-const Delete = styled.button`
-  padding: 0.5rem 1rem;
-  color:red;
-  border-radius: 4px;
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f1f3f5;
-  }
-
-  &:active {
-    background-color #e9ecef;
-  }
-`;
 
 const Memo = ({ id, title, description, createdAt, onSubmit, deleteMemo }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -134,6 +48,93 @@ const Memo = ({ id, title, description, createdAt, onSubmit, deleteMemo }) => {
     </Container>
   );
 };
+
+const Container = styled.section`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
+
+const CreatedAt = styled.h5`
+  color: ${color.darkGray};
+  font-family: 'NEXON Lv2 Gothic', sans-serif;
+  font-size: ${size.tiny};
+`;
+
+const Title = styled.h1`
+  width: 100%;
+  margin-top: ${size.base};
+
+  font-size: ${size.medium};
+
+  display: block;
+`;
+
+const Description = styled.p`
+  width: 100%;
+  max-height: 180px;
+
+  margin-top: ${size.base};
+  margin-bottom: auto;
+
+  font-size: ${size.base};
+  line-height: 120%;
+
+  display: block;
+
+  word-break: break-all;
+  white-space: pre-line;
+
+  overflow: auto;
+`;
+
+const Ask = styled.h1`
+  display: block;
+  width: 100%;
+
+  font-size: ${size.small};
+
+  ${device.tablet`
+  font-size: ${size.medium};
+  `}
+`;
+
+const ButtonGroup = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
+const Cancel = styled.button`
+  padding: calc(0.5 * ${size.base}) ${size.base};
+  color: ${color.darkGray};
+  cursor: pointer;
+
+  &:hover {
+    color: ${color.purple};
+  }
+`;
+
+const Delete = styled.button`
+  padding: calc(0.5 * ${size.base}) ${size.base};
+  color: ${color.red};
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${color.gray};
+  }
+
+  &:active {
+    background-color ${color.lightGray};
+  }
+`;
 
 const mapDispatchToProps = (dispatch) => {
   return {

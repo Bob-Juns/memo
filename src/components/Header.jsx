@@ -2,6 +2,7 @@ import React from 'react';
 
 // styles
 import styled from 'styled-components';
+import { size, color } from '../styles/SharedStyle';
 import device from '../styles/MediaQuery';
 
 const Container = styled.h1`
@@ -19,15 +20,15 @@ const Container = styled.h1`
 
   font-family: 'baloo 2', cursive;
   font-weight: 700;
-  font-size: 1.75rem;
+  font-size: ${size.large};
 
   color: #fff;
-  background-color: #9775fa;
+  background-color: ${color.purple};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 
   ${device.tablet`
     height: 80px;
-    font-size: 3rem;
+    font-size: ${size.huge};
   `}
 `;
 

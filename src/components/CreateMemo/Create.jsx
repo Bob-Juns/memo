@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 // styles
 import styled from 'styled-components';
+import { size, color } from '../../styles/SharedStyle';
 
 // redux
 import { connect } from 'react-redux';
@@ -15,12 +16,12 @@ const Container = styled.div`
   max-width: 768px;
   margin: 0 auto;
   color: #000;
-  padding: 1rem;
+  padding: ${size.base};
 `;
 
 const InputBox = styled.div`
   width: 100%;
-  padding: 1rem;
+  padding: ${size.base};
 
   background-color: #fff;
 
@@ -35,16 +36,16 @@ const InputBox = styled.div`
 `;
 
 const Warning = styled.h5`
-  color: red;
+  color: ${color.red};
   font-family: 'NEXON Lv2 Gothic', sans-serif;
-  font-size: 0.75rem;
+  font-size: ${size.tiny};
 `;
 
 const Placeholder = styled.h5`
-  color: #ced4da;
+  color: ${color.darkGray};
 
   font-family: 'NEXON Lv2 Gothic', sans-serif;
-  font-size: 1.125rem;
+  font-size: ${size.small};
 `;
 
 const Create = ({ createMemo }) => {

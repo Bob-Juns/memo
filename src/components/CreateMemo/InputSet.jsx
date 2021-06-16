@@ -2,20 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Textarea from 'react-textarea-autosize';
 
 import styled from 'styled-components';
-
-const TitleInput = styled.input`
-  width: 100%;
-  font-size: 1.25rem;
-`;
-
-const StyledTextArea = styled(Textarea)`
-  width: 100%;
-  margin-top: 1rem;
-
-  font-size: 1.125rem;
-
-  resize: both;
-`;
+import { size } from '../../styles/SharedStyle';
 
 const InputSet = ({ onChangeInput, title, description }) => {
   const inputRef = useRef(null);
@@ -48,5 +35,19 @@ const InputSet = ({ onChangeInput, title, description }) => {
     </>
   );
 };
+
+const TitleInput = styled.input`
+  width: 100%;
+  font-size: ${size.medium};
+`;
+
+const StyledTextArea = styled(Textarea)`
+  width: 100%;
+  margin-top: ${size.base};
+
+  font-size: ${size.small};
+
+  resize: both;
+`;
 
 export default InputSet;

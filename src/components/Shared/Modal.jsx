@@ -2,13 +2,24 @@ import React from 'react';
 
 // styles
 import styled from 'styled-components';
+import { size, screen } from '../../styles/SharedStyle';
 import device from '../../styles/MediaQuery';
+
+const Modal = ({ children }) => {
+  return (
+    <>
+      <Container>
+        <Wrapper>{children}</Wrapper>
+      </Container>
+    </>
+  );
+};
 
 const Container = styled.article`
   width: 100vw;
   height: 100vh;
 
-  padding: 1rem;
+  padding: ${size.base};
 
   background-color: rgba(0, 0, 0, 0.4);
 
@@ -29,7 +40,7 @@ const Wrapper = styled.section`
 
   background-color: #fff;
 
-  padding: 2rem 2rem 1.5rem;
+  padding: calc(2 * ${size.base}) calc(2 * ${size.base}) ${size.large};
 
   display: flex;
   flex-direction: column;
@@ -40,19 +51,9 @@ const Wrapper = styled.section`
 
   ${device.tablet`
       width: 70%;
-      max-width: 768px;
+      max-width: ${screen.tablet};
       height: 300px;
     `}
 `;
-
-const Modal = ({ children }) => {
-  return (
-    <>
-      <Container>
-        <Wrapper>{children}</Wrapper>
-      </Container>
-    </>
-  );
-};
 
 export default Modal;

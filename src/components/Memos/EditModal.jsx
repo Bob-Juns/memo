@@ -3,6 +3,7 @@ import Textarea from 'react-textarea-autosize';
 
 // styles
 import styled from 'styled-components';
+import { size, color } from '../../styles/SharedStyle';
 import device from '../../styles/MediaQuery';
 
 //redux
@@ -11,67 +12,6 @@ import { actions } from '../../redux/modules/rootReducer';
 
 // components
 import Modal from '../Shared/Modal';
-
-const Text = styled.h1`
-  width: 100%
-  font: {
-    size: 1.125rem;
-  }
-
-
-  ${device.tablet`
-    font-size: 1.25rem;
-  `}
-`;
-
-const Title = styled.input`
-  width: 100%;
-  margin-top: 1rem;
-
-  font-size: 1.125rem;
-  display: block;
-
-  ${device.tablet`
-  font-size: 1.25rem;
-  `}
-`;
-
-const Description = styled(Textarea)`
-  width: 100%;
-  margin-top: 0.5rem;
-
-  font-size: 0.75rem;
-
-  display: block;
-
-  resize: both;
-
-  ${device.tablet`
-  font-size: 1rem;
-  `}
-`;
-
-const EditBtn = styled.button`
-  margin-top: auto;
-  margin-left: auto;
-  padding: 0.5rem 1rem;
-
-  color:#7048e8;
-
-  display: inline-block;
-
-  border-radius: 4px;
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f1f3f5;
-  }
-
-  &:active {
-    background-color #e9ecef;
-  }
-`;
 
 const EditModal = ({
   id,
@@ -128,6 +68,64 @@ const EditModal = ({
     </Modal>
   );
 };
+
+const Text = styled.h1`
+  width: 100%
+  font-size: ${size.small};
+
+  ${device.tablet`
+    font-size: ${size.medium};
+  `}
+`;
+
+const Title = styled.input`
+  width: 100%;
+  margin-top: ${size.base};
+
+  font-size: ${size.small};
+  display: block;
+
+  ${device.tablet`
+  font-size: ${size.medium};
+  `}
+`;
+
+const Description = styled(Textarea)`
+  width: 100%;
+  margin-top: calc(0.5 * ${size.base});
+
+  font-size: ${size.tiny};
+
+  display: block;
+
+  resize: both;
+
+  ${device.tablet`
+  font-size: ${size.base};
+  `}
+`;
+
+const EditBtn = styled.button`
+  margin-top: auto;
+  margin-left: auto;
+  padding: calc(0.5 * ${size.base}) ${size.base};
+
+  color: ${color.dark};
+
+  display: inline-block;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${color.gray};
+  }
+
+  &:active {
+    background-color: ${color.lightGray};
+  }
+`;
 
 const mapStateToProps = (state) => {
   return {
