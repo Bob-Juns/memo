@@ -1,10 +1,10 @@
 //action type
-const OPEN_CLOSE = 'OPEN_CLOSE';
+const IS_OPENED = 'IS_OPENED';
 
 //action
 export const handleEditorOpen = (isOpened) => {
   return {
-    type: OPEN_CLOSE,
+    type: IS_OPENED,
     isOpened,
   };
 };
@@ -17,7 +17,7 @@ const initialState = {
 //reducer
 const editorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case OPEN_CLOSE:
+    case IS_OPENED:
       return {
         ...state,
         isOpened: action.isOpened,

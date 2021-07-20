@@ -5,16 +5,17 @@ import { connect } from 'react-redux';
 
 //styles
 import styled from 'styled-components';
-import { size, color, screen } from '../styles/SharedStyle';
-import device from '../styles/MediaQuery';
+import { maxSize } from './styles/SharedStyle';
+import device from './styles/MediaQuery';
 
 //components
-import Layout from './Layout';
-import Header from './Header';
-import Create from './CreateMemo/Create';
-import Memos from './Memos/Memos';
+import Layout from './components/Layout';
+import Header from './components/Header';
+import Create from './components/CreateMemo/Create';
+import Memos from './components/Memos/Memos';
 
 const App = ({ memos }) => {
+  console.log();
   return (
     <Layout>
       <Header />
@@ -27,7 +28,7 @@ const App = ({ memos }) => {
             title={item.title}
             createdAt={item.createdAt}
             description={item.description}
-          ></Memos>
+          />
         ))}
       </MemoList>
     </Layout>
@@ -37,16 +38,21 @@ const App = ({ memos }) => {
 const MemoList = styled.article`
   width: 100%;
   margin: 0 auto;
-  padding: ${size.base};
+  padding: 1rem;
 
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  column-gap: ${size.base};
-  row-gap: ${size.base};
+  column-gap: 1rem;
+  row-gap: 1rem;
 
   ${device.tablet`
     grid-template-columns: repeat(3, 1fr);
-    max-width: ${screen.tablet};
+    max-width: ${maxSize.tablet};
+  `}
+
+  ${device.desktop`
+  grid-template-columns: repeat(4, 1fr);
+    max-width: ${maxSize.desktop};
   `}
 `;
 

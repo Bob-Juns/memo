@@ -38,12 +38,15 @@ const memoReducer = (state = initialState, { type, payload }) => {
     case CREATE:
       return {
         ...state,
-        memos: state.memos.concat({
-          id: Date.now(),
-          createdAt: getDate(),
-          title: payload.title,
-          description: payload.description,
-        }),
+        memos: [
+          {
+            id: Date.now(),
+            createdAt: getDate(),
+            title: payload.title,
+            description: payload.description,
+          },
+          ...state.memos,
+        ],
       };
 
     case DELETE:
