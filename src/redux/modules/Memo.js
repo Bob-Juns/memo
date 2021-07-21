@@ -3,6 +3,7 @@ import getDate from '../../utils/getDate';
 //action types
 const CREATE = 'CREATE';
 const DELETE = 'DELETE';
+const DELETE_ALL = 'DELETE_ALL';
 const UPDATE = 'UPDATE';
 
 //actions
@@ -17,6 +18,12 @@ export const deleteMemo = (id) => {
   return {
     type: DELETE,
     payload: { id },
+  };
+};
+
+export const deleteAllMemo = () => {
+  return {
+    type: DELETE_ALL,
   };
 };
 
@@ -54,6 +61,9 @@ const memoReducer = (state = initialState, { type, payload }) => {
         ...state,
         memos: state.memos.filter((item) => item.id !== payload.id),
       };
+
+    case DELETE_ALL:
+      return initialState;
 
     case UPDATE:
       return {

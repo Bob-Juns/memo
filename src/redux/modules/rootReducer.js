@@ -1,18 +1,21 @@
 import { combineReducers } from 'redux';
 
 //reducers
-import editorReducer, { handleEditorOpen } from './Editor';
-import memoReducer, { createMemo, deleteMemo, updateMemo } from './Memo';
-
-export const actions = {
-  handleEditorOpen,
+import memoReducer, {
   createMemo,
   deleteMemo,
+  deleteAllMemo,
+  updateMemo,
+} from './Memo';
+
+export const actions = {
+  createMemo,
+  deleteMemo,
+  deleteAllMemo,
   updateMemo,
 };
 
 const rootReducer = combineReducers({
-  editorReducer,
   memoReducer,
 });
 

@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import Textarea from 'react-textarea-autosize';
 
 import styled from 'styled-components';
-import { size } from '../../styles/SharedStyle';
 
-const InputSet = ({ onChangeInput, title, description }) => {
+const InputSet = ({ onChange, title, description }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -16,17 +15,17 @@ const InputSet = ({ onChangeInput, title, description }) => {
       <TitleInput
         type="text"
         name="title"
-        onChange={onChangeInput}
+        onChange={onChange}
         placeholder="제목"
         value={title}
-        maxLength="15"
+        maxLength="30"
         ref={inputRef}
       />
       <StyledTextArea
         type="text"
         name="description"
-        onChange={onChangeInput}
-        placeholder="내용을 입력하세요."
+        onChange={onChange}
+        placeholder="내용"
         value={description}
         minRows={3}
         maxRows={10}
@@ -38,16 +37,16 @@ const InputSet = ({ onChangeInput, title, description }) => {
 
 const TitleInput = styled.input`
   width: 100%;
-  font-size: ${size.medium};
+  font-size: 1rem;
 `;
 
 const StyledTextArea = styled(Textarea)`
   width: 100%;
-  margin-top: ${size.base};
+  margin-top: 1.125rem;
 
-  font-size: ${size.small};
+  font-size: 0.75rem;
 
   resize: both;
 `;
 
-export default InputSet;
+export default memo(InputSet);

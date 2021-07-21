@@ -1,7 +1,7 @@
 import React from 'react';
 
+// styles
 import styled from 'styled-components';
-import device from '../styles/MediaQuery';
 
 const Layout = ({ children }) => {
   return (
@@ -11,16 +11,12 @@ const Layout = ({ children }) => {
   );
 };
 
-const Container = styled.article`
+const Container = styled.main`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
-  padding-top: 60px;
+  padding-top: 3.125rem;
   margin: 0 auto;
-
-  ${device.tablet`
-    padding-top: 80px;
-  `}
 `;
 
 export default Layout;

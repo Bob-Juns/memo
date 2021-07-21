@@ -2,14 +2,42 @@ import React from 'react';
 
 // styles
 import styled from 'styled-components';
-import { size, screen } from '../../styles/SharedStyle';
-import device from '../../styles/MediaQuery';
+import { color } from '@styles/SharedStyle';
 
-const Modal = ({ children }) => {
+// components
+import { Button } from '@components/Shared/Buttons';
+
+const Modal = ({
+  width,
+  height,
+  title,
+  children,
+  leftButtonColor,
+  leftButtonName,
+  onClickLeftButton,
+  rightButtonColor,
+  rightButtonName,
+  onClickRightButton,
+}) => {
   return (
     <>
       <Container>
-        <Wrapper>{children}</Wrapper>
+        <Wrapper width={width} height={height}>
+          <Title>{title}</Title>
+          {children}
+          <Buttons>
+            <Button
+              colour={leftButtonColor}
+              buttonName={leftButtonName}
+              onClick={onClickLeftButton}
+            />
+            <Button
+              colour={rightButtonColor}
+              buttonName={rightButtonName}
+              onClick={onClickRightButton}
+            />
+          </Buttons>
+        </Wrapper>
       </Container>
     </>
   );
@@ -19,9 +47,7 @@ const Container = styled.article`
   width: 100vw;
   height: 100vh;
 
-  padding: ${size.base};
-
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
 
   display: flex;
   justify-content: center;
@@ -35,25 +61,36 @@ const Container = styled.article`
 `;
 
 const Wrapper = styled.section`
-  width: 100%;
-  height: 200px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
 
   background-color: #fff;
 
-  padding: calc(2 * ${size.base}) calc(2 * ${size.base}) ${size.large};
+  padding: 1.5rem 1rem 0.75rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-start;
 
-  border-radius: 10px;
+  border-radius: 0.5rem;
+`;
 
-  ${device.tablet`
-      width: 70%;
-      max-width: ${screen.tablet};
-      height: 300px;
-    `}
+const Title = styled.h3`
+  width: 100%;
+  color: ${color.purple.dark};
+  font-size: 1rem;
+
+  margin-bottom: 1rem;
+`;
+
+const Buttons = styled.div`
+  width: 100%;
+
+  margin-top: auto;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 export default Modal;

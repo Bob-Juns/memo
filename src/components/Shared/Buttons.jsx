@@ -1,58 +1,42 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 // styles
 import styled from 'styled-components';
-import { size, color } from '../../styles/SharedStyle';
+import { color } from '@styles/SharedStyle';
+
 // assets
-import TrashIcon from '../../assets/trash.svg';
+import TrashSvg from '@assets/TrashSvg';
 
-const Buttons = ({ onDelete, onSubmit, btnName }) => {
+export const Button = memo(({ alone, colour, onClick, buttonName }) => {
   return (
-    <>
-      <Container>
-        <Trash onClick={onDelete} />
-        <Save onClick={onSubmit}>{btnName}</Save>
-      </Container>
-    </>
+    <_Button alone={alone} colour={colour} onClick={onClick}>
+      {buttonName}
+    </_Button>
   );
-};
+});
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+export const Trash = memo(({ onClick }) => {
+  return (
+    <TrashSvg
+      fill={color.gray.dark}
+      width="1.25rem"
+      height="1.25rem"
+      onClick={onClick}
+    />
+  );
+});
 
-const Save = styled.button`
-  padding: calc(0.5 * ${size.base}) ${size.base};
-
-  color: ${color.dark};
+const _Button = styled.button`
+  padding: 0.5rem 1rem;
+  color: ${(props) => props.colour};
+  margin: ${(props) => (props.alone ? 'auto 0 0 auto' : '')};
 
   display: inline-block;
 
-  border-radius: 4px;
+  border-radius: 0.3rem;
   cursor: pointer;
 
   &:hover {
-    background-color: ${color.gray};
-  }
-
-  &:active {
-    background-color: ${color.lightGray};
+    background-color: ${color.gray.base};
   }
 `;
-
-const Trash = styled(TrashIcon)`
-  width: ${size.medium};
-  height: ${size.medium};
-
-  color: #adb5bd;
-
-  cursor: pointer;
-
-  &:hover {
-    color: ${color.dark};
-  }
-`;
-
-export default Buttons;

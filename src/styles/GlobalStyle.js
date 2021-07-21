@@ -76,6 +76,10 @@ const GlobalStyle = createGlobalStyle`
       padding-left: 0;
       list-style: none;
     }
+
+    mark {
+      background-color: inherit;
+    }
 `;
 
 export default GlobalStyle;
