@@ -9,6 +9,14 @@ module.exports = {
   devtool: production ? 'eval' : 'inline-cheap-module-source-map',
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
+    alias: {
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@redux': path.resolve(__dirname, 'src/redux'),
+      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+    },
   },
   entry: {
     main: ['./src/index.js'],
