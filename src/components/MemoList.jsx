@@ -47,6 +47,15 @@ const Container = styled.article`
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
+
+  ${device.tablet`
+    margin: 0 auto;
+    max-width: ${maxSize.tablet};
+  `}
+
+  ${device.desktop`
+    max-width: ${maxSize.desktop};
+  `}
 `;
 
 const Clear = styled.aside`
@@ -70,14 +79,11 @@ const Contents = styled.section`
   row-gap: 1rem;
 
   ${device.tablet`
-    margin: 0 auto;
     grid-template-columns: repeat(3, 1fr);
-    max-width: ${maxSize.tablet};
   `}
 
   ${device.desktop`
   grid-template-columns: repeat(4, 1fr);
-    max-width: ${maxSize.desktop};
   `}
 `;
 
