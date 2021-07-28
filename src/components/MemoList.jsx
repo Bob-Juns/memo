@@ -48,14 +48,7 @@ const Container = styled.article`
   display: flex;
   flex-direction: column;
 
-  ${device.tablet`
-    margin: 0 auto;
-    max-width: ${maxSize.tablet};
-  `}
-
-  ${device.desktop`
-    max-width: ${maxSize.desktop};
-  `}
+  margin: 0 auto;
 `;
 
 const Clear = styled.aside`
