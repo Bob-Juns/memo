@@ -20,9 +20,6 @@ const Container = styled.h1`
   align-items: center;
   justify-content: center;
 
-  position: fixed;
-  top: 0;
-
   z-index: 3;
 
   font-family: 'baloo 2', cursive;
